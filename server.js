@@ -1,3 +1,5 @@
+const authRoutes = require('./src/routes/auth');
+const authMiddleware = require('./src/middleware/auth');
 require('dotenv').config();
 const express = require('express');
 const pool = require('./src/db');
@@ -12,6 +14,21 @@ app.get('/health', async (req, res) => {
     } catch (error) {
         console.error('Error checking health:', error);
         res.status(500).json({ status: 'error', message: 'No se pudo conectar' });
+    }
+});
+
+app.use('/api/auth', authRoutes);
+
+app.get('/api/me', authMiddleware, async (req, res) => {
+    try {
+        const result = await pool.query(
+            'SELECT id, name, email, balance FROM users WHERE id = $1',
+            [req.user.id]
+        );
+        res.json(result.rows[0]);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Error en el servidor' });
     }
 });
 
