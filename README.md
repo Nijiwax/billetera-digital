@@ -4,7 +4,12 @@ Aplicación web full-stack para gestionar dinero entre usuarios: permite
 registrarse, añadir dinero, enviar dinero a otros usuarios y consultar
 el historial de movimientos.
 
-**Demo:** [enlace, cuando la despliegues]
+**Demo:** **Demo:** https://billetera-digital-eypa.onrender.com
+
+> El servidor gratuito se duerme tras un rato sin uso, así que la primera
+> carga puede tardar hasta un minuto. Es un proyecto educativo: no uses
+> datos ni dinero reales.
+**Usuario de prueba:** demo@correo.com / contraseña: demo1234
 
 ## Tecnologías
 Node.js, Express, PostgreSQL, JWT, bcrypt, HTML, CSS, Bootstrap, JavaScript
